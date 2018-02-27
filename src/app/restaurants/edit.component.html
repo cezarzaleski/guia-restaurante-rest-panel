@@ -2,4 +2,57 @@
     <div class="col s12">
         <h4><i class="material-icons">keyboard_arrow_right</i>Restaurante <small class="grey-text">atualize os dados do restaurante</small></h4>
     </div>
+    <div class="col s9">
+
+    </div>
+    <div class="col s3">
+        <div class="card-panel white-text center-align photo-changer"
+             [ngClass]="{
+                'lighten-1': dragging
+            }"
+             (click)="file.click()"
+             (drop)="upload($event)"
+             (dragover)="dragover($event)"
+             (dragleave)="dragging = false"
+        >
+            <i class="material-icons">insert_photo</i>
+            <p *ngIf="!dragging;else release">Arraste sua foto aqui ou clique para enviar</p>
+            <ng-template #release>
+                <p *ngIf="upload_status === 'not'">Solte para enviar</p>
+                <p *ngIf="upload_status === 'sending'">Enviando, aguarde...</p>
+                <p *ngIf="upload_status === 'success'">Enviado com sucesso, você pode arrastar ou clicar aqui para enviar outro</p>
+                <p *ngIf="upload_status === 'error'">Erro ao enviar, tente novamente ou contate o administrador do sistema.</p>
+            </ng-template>
+            <input type="file" accept="image/*" #file style="display: none" (change)="upload($event)">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col s12">
+        <div class="card">
+            <div class="card-content">
+                <div class="row">
+                    <div class="col s12 margin-bottom">
+                        <span class="card-title">Fotos do restaurante</span>
+                    </div>
+                    <div class="col s3 margin bottom">
+                        <img class="materialboxed responsive-img" width="650" src="http://materializecss.com/images/sample-1.jpg">
+                    </div>
+                    <div class="col s3 margin bottom">
+                        <img class="materialboxed responsive-img" width="650" src="http://materializecss.com/images/sample-1.jpg">
+                    </div>
+                    <div class="col s3 margin bottom">
+                        <img class="materialboxed responsive-img" width="650" src="http://materializecss.com/images/sample-1.jpg">
+                    </div>
+                    <div class="col s3 margin bottom">
+                        <img class="materialboxed responsive-img" width="650" src="http://materializecss.com/images/sample-1.jpg">
+                    </div>
+                    <div class="col s3 margin bottom">
+                        <img class="materialboxed responsive-img" width="650" src="http://materializecss.com/images/sample-1.jpg">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
